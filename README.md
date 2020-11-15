@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/VidarHUN/DevOps-hf-frontend.svg?branch=master)](https://travis-ci.org/VidarHUN/DevOps-hf-frontend)
+
 # NgCounter
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.2.0.
