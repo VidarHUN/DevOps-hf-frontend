@@ -1,0 +1,12 @@
+services:
+    - docker
+
+jobs:
+    include:
+        - stage: build docker image
+          script:
+            - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+            - docker build -t devops-hf-frontend .
+            - docker images
+            - docker tag devops-hf-frontend $DOCKER_USERNAME/devops-hf-frontend
+            - docker push $DOCKER_USERNAME/devops-hf-frontend
