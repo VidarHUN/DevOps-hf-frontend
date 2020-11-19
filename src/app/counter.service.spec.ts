@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
 
 import { CounterService } from './counter.service';
@@ -6,7 +7,10 @@ describe('CounterService', () => {
   let service: CounterService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      imports: [HttpClientModule],
+      providers: [CounterService]
+    });
     service = TestBed.inject(CounterService);
   });
 

@@ -2,6 +2,7 @@
 
 import 'zone.js/dist/zone-testing';
 import { getTestBed } from '@angular/core/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import {
   BrowserDynamicTestingModule,
   platformBrowserDynamicTesting
@@ -13,6 +14,7 @@ declare const require: {
     <T>(id: string): T;
   };
 };
+
 
 // First, initialize the Angular testing environment.
 getTestBed().initTestEnvironment(
