@@ -8,13 +8,15 @@ import { from, Observable } from 'rxjs';
 })
 export class CounterService {
 
-  private API: string = 'http://localhost:9000/counter'
-  noAuthHeader = {headers: new HttpHeaders({ 'Access-Control-Allow-Origin': '*'}) };
+  //private API: string = 'http://localhost:9000/counter'
+  private API: string = '/counter'
+
+  header = {headers: new HttpHeaders({ 'Access-Control-Allow-Origin': '*'}) };
 
 
   constructor(private httpClient: HttpClient) { }
   public incrementCounter(){
-    return this.httpClient.get(this.API, this.noAuthHeader);
+    return this.httpClient.get(this.API, this.header);
   }
 
 }
