@@ -1,14 +1,28 @@
-  
+language: node_js 
+
 services:
     - docker
 
 addons:
   apt:
+    sources:
+      - google-chrome
     packages:
-    - sshpass
+      - sshpass
+      - google-chrome-stable
+
+cache:
+  directories:
+    - ./node_modules
+
+install:
+  - npm install
 
 jobs:
     include:
+        - stage: test
+          script:
+            - npm run test -- --watch=false --no-progress --browsers=ChromeHeadlessNoSandbox
         - stage: build docker image
           script:
             - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
