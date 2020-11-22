@@ -1,8 +1,16 @@
 services:
     - docker
 
+addons:
+  apt:
+    packages:
+    - sshpass
+
 jobs:
     include:
+        - stage: test
+          script:
+            - ng test
         - stage: build docker image
           script:
             - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
@@ -10,3 +18,6 @@ jobs:
             - docker images
             - docker tag devops-hf-frontend $DOCKER_USERNAME/devops-hf-frontend
             - docker push $DOCKER_USERNAME/devops-hf-frontend
+        - stage: build helm 
+          script:
+            - sshpass -p $CLUSTER_PASSWORD ssh -o StrictHostKeyChecking=no cloud@vm.smallville.cloud.bme.hu -p $CLUSTER_PORT helm upgrade --install counter-frontend DevOps-hf-helm/charts/counter-frontend
