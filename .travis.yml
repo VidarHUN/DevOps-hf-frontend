@@ -1,6 +1,4 @@
   
-language: node_js
-
 services:
     - docker
 
@@ -11,9 +9,6 @@ addons:
 
 jobs:
     include:
-        - stage: test
-          script:
-            - ng test
         - stage: build docker image
           script:
             - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
