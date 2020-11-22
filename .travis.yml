@@ -14,7 +14,6 @@ addons:
       - google-chrome
     packages:
       - sshpass
-      - google-chrome-stable
 
 cache:
   directories:
